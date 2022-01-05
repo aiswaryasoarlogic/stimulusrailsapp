@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div style="padding: 5%; padding-top: 0%; width: 80%; border: double black; margin-left: 10%; background-color: white;">
+<h2 style="text-align: center">Create SubPage</h2>
+
+<% @pages.each do |page| %>
+  <h4 style="text-align: center"><%= page.title %></h4>
+<form action="/subpage" enctype="multipart/form-data" method = "POST">
+  
+
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="title"><b>Title:</b></label><br>
+  <input type="text" id="title" name="page[title]" value=""><br>
+  <label for="page title"><b>Page Title:</b></label><br>
+  <input type="text" id="pagetitle" name="page[pagetitle]" value=""><br>
+  <label for="keywords"><b>Keywords:</b></label><br>
+  <input type="text" id="keywords" name="page[keywords]" value=""><br>
+  <label for="meta description"><b>Meta description:</b></label><br>
+  <input type="text" id="metadescription" name="page[metadescription]" value=""><br>
+  <label for="description" ><b>Description</b></label><br>
+  <textarea type="text" id="description" rows="10" cols="110" name="page[description]" value=""></textarea><br><br>
+  <label for="image"><b>Image:</b></label><br>
+  <input type="file" id="user_image" class="form-control" name="page[image]" placeholder="Password *" value="" />
+  <input type="hidden" id="title" name="page[pageid]" value=<%= page.id %>><br>
+  </br>
+  <input type="submit" value="Submit">
+  
+</form> 
+<% end %>
+</div>
+</body>
+</html>

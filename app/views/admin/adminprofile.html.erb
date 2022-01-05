@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <% if @user.image.attached? %>
+                    <%= link_to image_tag(@user.image), :class => "avatar img-circle img-thumbnail" %>
+                    <% else %>
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="Avatar" class="avatar">
+                        
+                    <% end %>
+                    <div class="profile-work">
+                <p>WORK LINK</p>
+                <a style="color: #9a55ff" href="">Website Link</a><br/>
+                <a style="color: #9a55ff" href="">Bootsnipp Profile</a><br/>
+                <a style="color: #9a55ff" href="">Bootply Profile</a></br></br>
+                <p>SKILLS</p>
+                <a style="color: #9a55ff" href="">Web Designer</a><br/>
+                <a style="color: #9a55ff" href="">Web Developer</a><br/>
+                <a style="color: #9a55ff" href="">WordPress</a><br/>
+                <a style="color: #9a55ff" href="">WooCommerce</a><br/>
+                <a style="color: #9a55ff" href="">PHP, .Net</a><br/>
+            </div>
+                    </div>
+                    <div class="col-md-8">
+                    <h1 style="text-align: center; color: #9a55ff">Admin Profile</h1>
+                    </br></br></br>
+                    <div class="content-wrapper">
+                    <div class="row">
+                    <div class="col-md-4">
+                    <h5>Name</h5></br>
+                    <h5>Email</h5></br>
+                    <h5>Profession</h5></br>
+                    <h5>Phone</h5></br>
+                    <h5>Date of birth</h5></br>
+                    <h5>Location</h5></br>
+                    </div>
+                    
+                    <div class="col-md-8" style="color: #9a55ff">
+                    <h4>Aiswarya P</h4></br>
+                    <h4>aiswaryasugathan001@gmail.com</h4></br>
+                    <h4>Software Developer</h4></br>
+                    <h4>9946873247</h4></br>
+                    <h4>1 July 1997</h4></br>
+                    <h4>Trivandrum, India</h4></br>
+                    </div>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

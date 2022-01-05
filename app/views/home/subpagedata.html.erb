@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type = "text/javascript">     
+                function clickhandler(){
+                    document.getElementById("notEditable").hidden = true;
+                    document.getElementById("editable").hidden = false;
+                    
+                }
+                function cancel(){
+                    document.getElementById("notEditable").hidden = false;
+                    document.getElementById("editable").hidden = true;
+                }
+            </script>
+
+<div id="notEditable" style="border: 1px solid #ccc;
+box-shadow: 3px 3px 2px #ccc;
+transition: 0.5s; padding: 5%; color: rgb(33, 135, 231); padding-top: 0%; width: 80%; margin-top: 5%; margin-left: 10%; background-color: white;">
+<% @pages.each do |page| %>
+    <div>
+
+<h2 style="text-align: center; color: rgb(33, 135, 231)"><%= page.title %></h2>
+<button style="float: right" onclick = "clickhandler();event.preventDefault();" type="button" class="btn btn-primary">Edit Page</button>&nbsp
+<button style="float: right; margin-right:10px;" onclick = "clickhandler();event.preventDefault();" type="button" class="btn btn-primary" >Delete</button>
+
+<h3 style="text-align: center; color: rgb(33, 135, 231)"><%= page.pagetitle %></h3></br></br>
+<p float= "left" style="color: rgb(33, 135, 231)"><b>Keywords: </b><%= page.keywords %></p></br>
+<h4><b>Meta Description</b></h4>
+<p style="color: rgb(33, 135, 231)"><%= page.metadescription %></p></br>
+<p><%= page.description %></p></br>
+    <%= link_to image_tag(page.image, style: 'width: 100%')%>
+
+    </div>
+    <% end %>
+    </br></br>
+    
+
+    </div>
+    
+    <% @pages.each do |page| %>
+    <div id="editable" hidden style="border: 1px solid #ccc;
+box-shadow: 3px 3px 2px #ccc;
+transition: 0.5s; padding: 5%; color: rgb(33, 135, 231); padding-top: 0%; width: 80%; margin-top: 5%; margin-left: 10%; background-color: white;">
+<form action="/updatesubpage?subpageid=<%= page.id %>" enctype="multipart/form-data" method = "POST">
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+<h3 style="text-align: center">Edit Page</h3></br>
+<h4>Title</h4><textarea type="text" id="title" rows="1" cols="130" name="page[title]" value=<%= page.title %>><%= page.title %></textarea></br></br>
+<h4>Page Title</h4><textarea type="text" id="pagetitle" rows="1" cols="130" name="page[pagetitle]" value=<%= page.pagetitle %>><%= page.pagetitle %></textarea></br></br>
+<h4>Keywords</h4><textarea type="text" id="keywords" rows="1" cols="130" name="page[keywords]" value=<%= page.keywords %>><%= page.keywords %></textarea></p></br>
+<h4>Meta Description</h4>
+<p style="color: rgb(33, 135, 231)"><textarea type="text" id="description" rows="1" cols="130" name="page[metadescription]" value=<%= page.metadescription %>><%= page.metadescription %></textarea></p></br>
+<h4>Description</h4>
+<textarea type="text" id="description" rows="10" cols="130" name="page[description]" value=<%= page.description %>><%= page.description %></textarea></br>
+<h4>Change Image</h4>    
+    <%= link_to image_tag(page.image, style: 'width: 100%')%>
+    <input type="file" id="user_image" class="form-control" name="page[image]" placeholder="Change Image" value="" /></br>
+    
+   
+    <button style = "float: right; margin-left: 10px" type="button" onclick="cancel(); event.preventDefault();" class="btn btn-warning">Cancel</button><button style = "float: right;" type="submit" class="btn btn-primary">Submit</button>
+</form> 
+    </div>
+    <% end %>
+    </body>
+    </html>

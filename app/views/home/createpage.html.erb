@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div style="border: 1px solid #ccc;
+box-shadow: 3px 3px 2px #ccc;
+transition: 0.5s; padding: 5%; padding-top: 0%; width: 80%; margin-top: 5%; margin-left: 10%; background-color: white; color: rgb(33, 135, 231)">
+<h2 style="text-align: center">Create Your Own Page</h2>
+<div data-controller="createpage">
+<form  action="/home" enctype="multipart/form-data" method = "POST">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="title"><b>Title:</b></label><br>
+  <input type="text" id="title" data-createpage-target="title" data-action="focusout->createpage#changehandler" name="page[title]" value=""><br>
+  <span style="color: red" data-createpage-target="titleoutput"></span><br>
+  <label for="page title"><b>Page Title:</b></label><br>
+  <input type="text" id="pagetitle" data-createpage-target="pagetitle" data-action="focusout->createpage#changehandler" name="page[pagetitle]" value=""><br>
+  <span style="color: red" data-createpage-target="pagetitleoutput"></span><br>
+  <label for="keywords"><b>Keywords:</b></label><br>
+  <input type="text" id="keywords" data-createpage-target="keyword" data-action="focusout->createpage#changehandler" name="page[keywords]" value=""><br>
+  <span style="color: red" data-createpage-target="keywordoutput"></span><br>
+  <label for="meta description"><b>Meta description:</b></label><br>
+  <input type="text" id="metadescription" data-createpage-target="metadescription" data-action="focusout->createpage#changehandler" name="page[metadescription]" value=""><br>
+  <span style="color: red" data-createpage-target="metadescriptionoutput"></span><br>
+  <label for="description" ><b>Description</b></label><br>
+  <textarea type="text" id="description" data-createpage-target="description" data-action="focusout->createpage#changehandler" rows="10" cols="120" name="page[description]" value=""></textarea><br><br>
+  <span style="color: red" data-createpage-target="descriptionoutput"></span><br>
+  <label for="image"><b>Image:</b></label><br>
+  <input type="file" id="user_image" class="form-control" name="page[image]" placeholder="Password *" value="" />
+  
+  <input type="hidden" id="title" name="page[userid]" value=<%= @userid %>><br>
+  
+  
+  <input type="submit" data-createpage-target="submitbtn" hidden  value="Submit"><br>
+  
+</form> 
+<button data-createpage-target="validatebtn" class = "btnRegister" style = "background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;" data-action="click->createpage#validate">Validate</button><br>
+</div>
+</div>
+
+</body>
+</html>
